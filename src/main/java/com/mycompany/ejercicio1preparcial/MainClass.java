@@ -1,11 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package com.mycompany.ejercicio1preparcial;
 
 import java.util.*;
-import javax.swing.JOptionPane;
 import rx.Observable;
 import rx.functions.Func2;
 
@@ -38,7 +33,7 @@ public class MainClass {
                                 new Func2<Integer, Integer, Integer>() {
                             @Override
                             public Integer call(Integer acumulador, Integer actual) {
-                             
+
                                 return acumulador + actual;
 
                             }
@@ -60,13 +55,12 @@ public class MainClass {
                                 new Func2<Integer, Integer, Integer>() {
                             @Override
                             public Integer call(Integer a, Integer actual) {
-                              if(actual<=a){
-                                  
-                              }else{
-                                  a=actual;
-                              }
+                                if (actual <= a) {
+
+                                } else {
+                                    a = actual;
+                                }
                                 return a;
-                               
 
                             }
 
