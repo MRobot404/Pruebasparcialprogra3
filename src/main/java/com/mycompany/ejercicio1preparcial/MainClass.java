@@ -19,7 +19,7 @@ public class MainClass {
 
     public static void main(String[] args) {
         ArrayList<Consola> consolas = new ArrayList<>();
-        consolas.add(new Consola("ps4", 300));
+        consolas.add(new Consola("ps4", 350));
         consolas.add(new Consola("gamecube", 300));
         consolas.add(new Consola("external disk", 200));
         consolas.add(new Consola("Laptop", 800));
@@ -38,14 +38,44 @@ public class MainClass {
                                 new Func2<Integer, Integer, Integer>() {
                             @Override
                             public Integer call(Integer acumulador, Integer actual) {
-                                // System.out.println("Actual:"+actual);
+                             
                                 return acumulador + actual;
+
                             }
                         }
                         );
         observableconsola.subscribe((sumatoria) -> {
             System.out.println(""
                     + "Sumatoria: " + sumatoria);
+            System.out.println("\n");
+        });
+        Observable observableconsola2
+                = Observable
+                        .from(consolas.toArray())
+                        .map((result) -> {
+                            Consola consola = (Consola) result;
+                            return consola.getEdad();
+                        })
+                        .reduce(
+                                new Func2<Integer, Integer, Integer>() {
+                            @Override
+                            public Integer call(Integer a, Integer actual) {
+                              if(actual<=a){
+                                  
+                              }else{
+                                  a=actual;
+                              }
+                                return a;
+                               
+
+                            }
+
+                        }
+                        );
+        observableconsola2.subscribe((verificador) -> {
+            System.out.println(""
+                    + "El numero mayor es : " + verificador);
+
         });
 
     }
