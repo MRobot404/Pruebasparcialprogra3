@@ -30,6 +30,7 @@ public class Ejercicio2 {
                 .subscribe((promedio) -> {
 
                     System.out.println("PROMEDIO: " + promedio);
+                    System.out.println("\n");
 
                 });
 
@@ -47,7 +48,9 @@ public class Ejercicio2 {
                                 if (actual == 10) {
                                     System.out.println(actual + "  Es igual que 10");
                                 } else if (actual > 10) {
-                                    System.out.println(actual + "  Es igual que 10");
+                                    System.out.println(actual + "  Es mayor 10");
+                                } else {
+                                    System.out.println(actual + " Es menor que 10");
                                 }
                                 return actual;
 
@@ -55,7 +58,31 @@ public class Ejercicio2 {
 
                         }
                         );
+        observablenumero.subscribe((verificador) -> {
+            System.out.println("\n");
+        });
+        Observable observablenumero2
+                = Observable
+                        .from(numeros.toArray())
+                        .map((result) -> {
+                            Numero numero = (Numero) result;
+                            return numero.getNumero();
+                        })
+                        .reduce(
+                                new Func2<Integer, Integer, Integer>() {
+                            @Override
+                            public Integer call(Integer acumulador, Integer actual) {
 
+                                return acumulador + actual;
+
+                            }
+                        }
+                        );
+        observablenumero2.subscribe((sumatoria) -> {
+            System.out.println(""
+                    + "Sumatoria: " + sumatoria);
+            System.out.println("\n");
+        });
     }
 
 }
